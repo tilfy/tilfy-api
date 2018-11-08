@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 2018_11_08_224142) do
   create_table "posts", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "title"
     t.text "content"
-    t.integer "status"
+    t.integer "status", default: 0, null: false
     t.datetime "published_at"
     t.uuid "category_id"
     t.uuid "user_id"

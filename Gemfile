@@ -15,6 +15,14 @@ gem 'figaro'
 # for user authentication
 gem 'devise'
 
+# trailblazer
+gem 'trailblazer', '2.1.0.rc1'
+gem 'trailblazer-rails', '2.1.5'
+gem 'trailblazer-operation', '0.4.1'
+gem 'reform', '2.3.0.rc1'
+gem 'reform-rails', '0.2.0.rc2'
+gem 'dry-validation', '0.12.2'
+
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rspec-rails'

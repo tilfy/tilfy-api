@@ -11,7 +11,9 @@ require "action_view/railtie"
 require "action_cable/engine"
 # require "sprockets/railtie"
 require "rails/test_unit/railtie"
-
+# to use in trailblazer
+require "reform"
+require "reform/form/dry"
 
 Bundler.require(*Rails.groups)
 
@@ -24,5 +26,8 @@ module TilfyApiV2
       g.orm :active_record, primary_key_type: :uuid
       g.test_framework :rspec, fixtures: false, view_specs: false, helper_specs: false, outing_specs: false
     end
+
+    # add folder concepts
+    config.autoload_paths += %W(#{config.root}/app/concepts)
   end
 end

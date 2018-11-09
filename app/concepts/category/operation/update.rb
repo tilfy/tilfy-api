@@ -8,8 +8,8 @@ class Category::Operation::Update < BaseOperation
     options[:model] = Category.find(params['id'])
   end
 
-  def contract_build!(options, **)
-    options['contract.default'] = Category::Contract::Default.new(options[:model])
+  def contract_build!(options, model:, **)
+    options['contract.default'] = Category::Contract::Default.new(model)
   end
 
   def contract_validate(options, params:, **)

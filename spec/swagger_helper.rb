@@ -13,10 +13,18 @@ RSpec.configure do |config|
   # document below. You can override this behavior by adding a swagger_doc tag to the
   # the root example_group in your specs, e.g. describe '...', swagger_doc: 'v2/swagger.json'
   config.swagger_docs = {
-    'v1/swagger.json' => {
+    'v1/user/swagger.json' => {
       swagger: '2.0',
       info: {
-        title: 'API V1',
+        title: 'USER API',
+        version: 'v1'
+      },
+      paths: {}
+    },
+    'v1/admin/swagger.json' => {
+      swagger: '2.0',
+      info: {
+        title: 'ADMIN API',
         version: 'v1'
       },
       paths: {}

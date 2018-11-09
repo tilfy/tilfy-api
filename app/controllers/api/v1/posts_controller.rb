@@ -1,6 +1,7 @@
 module Api
   module V1
-    class CategoriesController < ApplicationController
+    class PostsController < ApplicationController
+
       def index
         response_operation(operation)
       end
@@ -9,11 +10,11 @@ module Api
         response_operation(operation, :created)
       end
 
-      def update
+      def show
         response_operation(operation)
       end
 
-      def show
+      def update
         response_operation(operation)
       end
 
@@ -24,18 +25,18 @@ module Api
       private
 
       def operation
-        @operation ||=
+        @operation ||= 
           case action_name
           when 'index'
-            Category::Operation::Index.()
+            Post::Operation::Index.()
           when 'create'
-            Category::Operation::Create.(params: params)
-          when 'update'
-            Category::Operation::Update.(params: params)
+            Post::Operation::Create.(params: params)
           when 'show'
-            Category::Operation::Show.(params: params)
+            Post::Operation::Show.(params: params)
+          when 'update'
+            Post::Operation::Update.(params: params)
           when 'destroy'
-            Category::Operation::Destroy.(params: params)
+            Post::Operation::Destroy.(params: params)
           end
       end
     end

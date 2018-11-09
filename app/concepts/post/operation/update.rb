@@ -1,15 +1,15 @@
-class Category::Operation::Create < BaseOperation
+class Post::Operation::Update < BaseOperation
   step :model!
   step :contract_build!
   step :contract_validate
   step :contract_persist!
 
-  def model!(options, **)
-    options[:model] = Category.new
+  def model!(options, params:, **)
+    options[:model] = Post.find(params['id'])
   end
 
   def contract_build!(options, model:, **)
-    options['contract.default'] = Category::Contract::Default.new(model)
+    options['contract.default'] = Post::Contract::Update.new(model)
   end
 
   def contract_validate(options, params:, **)

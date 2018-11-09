@@ -1,3 +1,5 @@
 en:
   errors:
     unique?: 'It already exists'
+    user_exists?: 'No found'
+    category_exists?: 'No found'

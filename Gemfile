@@ -23,6 +23,9 @@ gem 'reform', '2.3.0.rc1'
 gem 'reform-rails', '0.2.0.rc2'
 gem 'dry-validation', '0.12.2'
 
+# for documentation
+gem 'rswag'
+
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rspec-rails'

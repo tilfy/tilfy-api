@@ -46,7 +46,7 @@ module Api
       def params_data_error(exception)
         render(
           json: { message: 'params data is required' },
-          status: 404
+          status: 422
         )
       end
 

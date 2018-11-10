@@ -516,6 +516,116 @@
           }
         }
       }
+    },
+    "/api/v1/posts/{post_id}/likes": {
+      "get": {
+        "summary": "Likes from a post",
+        "tags": [
+          "User likes"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "post_id",
+            "in": "path",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Collection from likes from a post"
+          },
+          "404": {
+            "description": "Post no found"
+          }
+        }
+      },
+      "post": {
+        "summary": "Create like for a post",
+        "tags": [
+          "User likes"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "post_id",
+            "in": "path",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "user_like",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "data": {
+                  "properties": {
+                    "user_id": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "user_id"
+                  ]
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "User like created"
+          },
+          "422": {
+            "description": "Invalid request"
+          },
+          "404": {
+            "description": "Post no found"
+          }
+        }
+      }
+    },
+    "/api/v1/likes/{id}": {
+      "delete": {
+        "summary": "Delete User like",
+        "tags": [
+          "User likes"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "User like deleted"
+          },
+          "404": {
+            "description": "User like no found"
+          }
+        }
+      }
     }
   }
 }

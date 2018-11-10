@@ -14,7 +14,10 @@ Rails.application.routes.draw do
       resources :posts do
         resources :comments, except: %w(show update destroy)
       end
-      resources :comments, only: %w(update destroy)
+      resources :comments, only: %w(update destroy) do
+        resources :replies, except: %w(show update destroy)
+      end
+      resources :replies, only: %w(update destroy)
     end
   end
 end

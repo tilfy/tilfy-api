@@ -1,30 +1,30 @@
 require 'swagger_helper'
 
-describe 'Comments Api', swagger_doc: 'v1/user/swagger.json' do
-  path '/api/v1/posts/{post_id}/comments' do
-    get 'Comments from a post' do
-      tags 'Comments'
+describe 'Replies Api', swagger_doc: 'v1/user/swagger.json' do
+  path '/api/v1/comments/{comment_id}/replies' do
+    get 'Replies from a comment' do
+      tags 'Replies'
       produces 'application/json'
       consumes 'application/json'
 
-      parameter name: :post_id, in: :path, type: :string
+      parameter name: :comment_id, in: :path, type: :string
 
-      response '200', 'Collection from comments from a post' do
+      response '200', 'Collection from replies from a comment' do
         run_test!
       end
 
-      response '404', 'Post no found' do
+      response '404', 'Comment no found' do
         run_test!
       end
     end
 
-    post 'Create comment for a post' do
-      tags 'Comments'
+    post 'Create reply for a comment' do
+      tags 'Replies'
       produces 'application/json'
       consumes 'application/json'
 
-      parameter name: :post_id, in: :path, type: :string
-      parameter name: :comment, in: :body, schema: {
+      parameter name: :comment_id, in: :path, type: :string
+      parameter name: :reply, in: :body, schema: {
         type: :object,
         properties: {
           data: {
@@ -37,7 +37,7 @@ describe 'Comments Api', swagger_doc: 'v1/user/swagger.json' do
         }
       }
 
-      response '201', 'Comment created' do
+      response '201', 'Reply created' do
         run_test!
       end
 
@@ -45,20 +45,20 @@ describe 'Comments Api', swagger_doc: 'v1/user/swagger.json' do
         run_test!
       end
 
-      response '404', 'Post no found' do
+      response '404', 'Comment no found' do
         run_test!
       end
     end
   end
 
-  path '/api/v1/comments/{id}' do
-    put 'Update comment' do
-      tags 'Comments'
+  path '/api/v1/replies/{id}' do
+    put 'Update reply' do
+      tags 'Replies'
       produces 'application/json'
       consumes 'application/json'
 
       parameter name: :id, in: :path, type: :string
-      parameter name: :comment, in: :body, schema: {
+      parameter name: :reply, in: :body, schema: {
         type: :object,
         properties: {
           data: {
@@ -70,7 +70,7 @@ describe 'Comments Api', swagger_doc: 'v1/user/swagger.json' do
         }
       }
 
-      response '200', 'Comment updated' do
+      response '200', 'Reply updated' do
         run_test!
       end
 
@@ -78,23 +78,23 @@ describe 'Comments Api', swagger_doc: 'v1/user/swagger.json' do
         run_test!
       end
 
-      response '404', 'Comment no found' do
+      response '404', 'Reply no found' do
         run_test!
       end
     end
 
-    delete 'Delete comment' do
-      tags 'Comments'
+    delete 'Delete reply' do
+      tags 'Replies'
       produces 'application/json'
       consumes 'application/json'
 
       parameter name: :id, in: :path, type: :string
 
-      response '204', 'Comment deleted' do
+      response '204', 'Reply deleted' do
         run_test!
       end
 
-      response '404', 'Comment no found' do
+      response '404', 'Reply no found' do
         run_test!
       end
 

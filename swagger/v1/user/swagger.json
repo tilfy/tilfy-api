@@ -352,6 +352,170 @@
           }
         }
       }
+    },
+    "/api/v1/comments/{comment_id}/replies": {
+      "get": {
+        "summary": "Replies from a comment",
+        "tags": [
+          "Replies"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "comment_id",
+            "in": "path",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Collection from replies from a comment"
+          },
+          "404": {
+            "description": "Comment no found"
+          }
+        }
+      },
+      "post": {
+        "summary": "Create reply for a comment",
+        "tags": [
+          "Replies"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "comment_id",
+            "in": "path",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "reply",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "data": {
+                  "properties": {
+                    "content": {
+                      "type": "string"
+                    },
+                    "user_id": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "content",
+                    "user_id"
+                  ]
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Reply created"
+          },
+          "422": {
+            "description": "Invalid request"
+          },
+          "404": {
+            "description": "Comment no found"
+          }
+        }
+      }
+    },
+    "/api/v1/replies/{id}": {
+      "put": {
+        "summary": "Update reply",
+        "tags": [
+          "Replies"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "reply",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "data": {
+                  "properties": {
+                    "content": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "content"
+                  ]
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Reply updated"
+          },
+          "422": {
+            "description": "Invalid request"
+          },
+          "404": {
+            "description": "Reply no found"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete reply",
+        "tags": [
+          "Replies"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Reply deleted"
+          },
+          "404": {
+            "description": "Reply no found"
+          }
+        }
+      }
     }
   }
 }

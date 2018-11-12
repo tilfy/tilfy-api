@@ -8,14 +8,14 @@ default: &default
 
 development:
   <<: *default
-  database: tilfy-api-v2_development
+  database: tilfy-api_development
 
 test:
   <<: *default
-  database: tilfy-api-v2_test
+  database: tilfy-api_test
 
 production:
   <<: *default
-  database: tilfy-api-v2_production
-  username: tilfy-api-v2
+  database: tilfy-api_production
+  username: tilfy-api
   password: <%= ENV['TILFY-API-V2_DATABASE_PASSWORD'] %>

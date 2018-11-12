@@ -14,4 +14,7 @@ FactoryBot.define do
     password { '123456' }
   end
 
+  factory :user_like do
+  end
+
 end

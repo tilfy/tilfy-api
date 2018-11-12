@@ -1,4 +1,4 @@
-class Post::Contract::Update < BaseContract
+class Post::Contract::Update < Application::Contract::Base
   property :title
   property :content
 

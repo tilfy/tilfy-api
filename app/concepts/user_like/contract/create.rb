@@ -1,4 +1,4 @@
-class UserLike::Contract::Create < BaseContract
+class UserLike::Contract::Create < Application::Contract::Base
   property :user_id
 
   validation with: { form: true } do

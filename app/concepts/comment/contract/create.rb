@@ -1,4 +1,4 @@
-class Comment::Contract::Create < BaseContract
+class Comment::Contract::Create < Application::Contract::Base
   property :content
   property :user_id
 

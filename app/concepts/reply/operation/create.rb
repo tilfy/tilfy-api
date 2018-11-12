@@ -1,4 +1,4 @@
-class Reply::Operation::Create < BaseOperation
+class Reply::Operation::Create < Application::Operation::Base
   step :model!
   step :contract_build!
   step :contract_validate

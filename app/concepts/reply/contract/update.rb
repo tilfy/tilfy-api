@@ -1,4 +1,4 @@
-class Reply::Contract::Update < BaseContract
+class Reply::Contract::Update < Application::Contract::Base
   property :content
 
   validation do

@@ -1,4 +1,4 @@
-class Comment::Operation::Destroy < BaseOperation
+class Comment::Operation::Destroy < Application::Operation::Base
   step :model!
   step :destroy!
 

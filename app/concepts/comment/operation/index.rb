@@ -1,4 +1,4 @@
-class Comment::Operation::Index < BaseOperation
+class Comment::Operation::Index < Application::Operation::Base
   step :model!
 
   def model!(options, params:, **)

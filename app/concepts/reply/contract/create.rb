@@ -1,4 +1,4 @@
-class Reply::Contract::Create < BaseContract
+class Reply::Contract::Create < Application::Contract::Base
   property :content
   property :user_id
 

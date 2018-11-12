@@ -1,4 +1,4 @@
-class Category::Operation::Create < BaseOperation
+class Category::Operation::Create < Application::Operation::Base
   step :model!
   step :contract_build!
   step :contract_validate

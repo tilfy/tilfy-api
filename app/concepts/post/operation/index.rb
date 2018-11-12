@@ -1,4 +1,4 @@
-class Post::Operation::Index < BaseOperation
+class Post::Operation::Index < Application::Operation::Base
   step :model!
 
   def model!(options, **)

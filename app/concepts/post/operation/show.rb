@@ -1,4 +1,4 @@
-class Post::Operation::Show < BaseOperation
+class Post::Operation::Show < Application::Operation::Base
   step :model!
 
   def model!(options, params:, **)

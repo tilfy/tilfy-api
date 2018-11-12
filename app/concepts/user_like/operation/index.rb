@@ -1,4 +1,4 @@
-class UserLike::Operation::Index < BaseOperation
+class UserLike::Operation::Index < Application::Operation::Base
   step :model!
 
   def model!(options, params:, **)

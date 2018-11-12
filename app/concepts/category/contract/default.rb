@@ -1,4 +1,4 @@
-class Category::Contract::Default < BaseContract
+class Category::Contract::Default < Application::Contract::Base
   property :name
 
   validation with: { form: true } do

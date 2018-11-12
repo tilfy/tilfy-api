@@ -1,4 +1,4 @@
-class Post::Contract::Create < BaseContract
+class Post::Contract::Create < Application::Contract::Base
   property :title
   property :content
   property :user_id

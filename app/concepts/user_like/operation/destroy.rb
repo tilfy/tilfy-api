@@ -1,4 +1,4 @@
-class UserLike::Operation::Destroy < BaseOperation
+class UserLike::Operation::Destroy < Application::Operation::Base
   step :model!
   step :destroy!
 

@@ -1,4 +1,4 @@
-class UserLike::Operation::Create < BaseOperation
+class UserLike::Operation::Create < Application::Operation::Base
   step :model!
   step :contract_build!
   step :contract_validate

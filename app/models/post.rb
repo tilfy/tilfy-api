@@ -7,6 +7,6 @@ class Post < ApplicationRecord
   has_many :users, through: :user_likes
   
   # enum for status
-  enum status: { joined: 0, published: 1, rejected: 2 }
+  enum status: { draft: 0, published: 1 }
 
 end

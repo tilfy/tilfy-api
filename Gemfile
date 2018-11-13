@@ -27,6 +27,8 @@ gem 'dry-validation', '0.12.2'
 gem 'rswag'
 gem 'rspec-rails'
 
+gem 'rack-cors', require: 'rack/cors'
+
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'factory_bot'

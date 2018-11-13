@@ -27,6 +27,16 @@ module TilfyApiV2
       g.test_framework :rspec, fixtures: false, view_specs: false, helper_specs: false, outing_specs: false
     end
 
+    # configure middleware
+    config.middleware.use Rack::Cors do
+      allow do
+        origins '*'
+        resource '*',
+          headers: :any,
+          methods: [:get, :post, :options, :delete, :put]
+      end
+    end
+
     # add folder concepts
     config.autoload_paths += %W(#{config.root}/app/concepts)
   end

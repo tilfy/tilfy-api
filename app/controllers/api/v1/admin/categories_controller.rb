@@ -1,7 +1,7 @@
 module Api
   module V1
     module Admin
-      class CategoriesController < Api::V1::ApplicationController
+      class CategoriesController < ApplicationController
         def index
           response_operation(operation)
         end

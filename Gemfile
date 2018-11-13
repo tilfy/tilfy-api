@@ -25,10 +25,10 @@ gem 'dry-validation', '0.12.2'
 
 # for documentation
 gem 'rswag'
+gem 'rspec-rails'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  gem 'rspec-rails'
   gem 'factory_bot'
   gem 'shoulda'
   gem 'pry-rails'

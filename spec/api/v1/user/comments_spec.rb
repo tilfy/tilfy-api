@@ -42,6 +42,12 @@ RSpec.describe 'User comments' do
       expect(json).not_to be_empty
       expect(json.size).to eq(11)
     end
+
+    it 'post no found' do
+      get "/api/v1/posts/#{post_id}/comments"
+
+      expect(response).to have_http_status(404)
+    end
   end
 
   describe 'Create a comment for post' do

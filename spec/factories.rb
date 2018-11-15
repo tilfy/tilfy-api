@@ -21,4 +21,8 @@ FactoryBot.define do
     content { Faker::Lorem.paragraph_by_chars }
   end
 
+  factory :reply do
+    content { Faker::Lorem.paragraph_by_chars }
+  end
+
 end

@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe 'Admin categories' do
   let!(:categories) { create_list(:category, 11) }
   let!(:category) { categories.first }
-  let(:valid_data) do
+  let!(:valid_data) do
     {
       data: {
         name: 'Ruby'

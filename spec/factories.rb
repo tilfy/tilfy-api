@@ -17,4 +17,8 @@ FactoryBot.define do
   factory :user_like do
   end
 
+  factory :comment do
+    content { Faker::Lorem.paragraph_by_chars }
+  end
+
 end

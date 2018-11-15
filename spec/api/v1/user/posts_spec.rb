@@ -65,15 +65,15 @@ RSpec.describe 'User posts' do
       post '/api/v1/posts', params: invalid_user_category
 
       expect(response).to have_http_status(422)
-      expect(json[0]).to eq('User Id No found')  
-      expect(json[1]).to eq('Category Id No found')
+      expect(json['errors']['user_id'].first).to eq('Must exist')  
+      expect(json['errors']['category_id'].first).to eq('Must exist')
     end
 
     it 'Post with invalid data' do
       post '/api/v1/posts', params: invalid_data
 
       expect(response).to have_http_status(422)
-      expect(json['message']).to eq('params data is required')  
+      expect(json['errors']['message']).to eq('params data is required')  
     end
   end
 
@@ -106,7 +106,7 @@ RSpec.describe 'User posts' do
       put "/api/v1/posts/#{posts.first.id}", params: invalid_data
 
       expect(response).to have_http_status(422)
-      expect(json['message']).to eq('params data is required')
+      expect(json['errors']['message']).to eq('params data is required')
     end
 
     it 'post no found' do

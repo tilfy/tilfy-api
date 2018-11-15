@@ -55,14 +55,14 @@ RSpec.describe 'User User likes' do
       post "/api/v1/posts/#{posts.last.id}/likes", params: invalid_data
 
       expect(response).to have_http_status(422)
-      expect(json['message']).to eq('params data is required') 
+      expect(json['errors']['message']).to eq('params data is required') 
     end
 
     it 'post invalid user' do
       post "/api/v1/posts/#{posts.last.id}/likes", params: invalid_user
 
       expect(response).to have_http_status(422)
-      expect(json[0]).to eq('User Id No found')
+      expect(json['errors']['user_id'].first).to eq('Must exist')
     end
 
     it 'post no found' do

@@ -46,14 +46,14 @@ RSpec.describe 'Admin categories' do
       post '/api/v1/admin/categories', params: invalid_data
 
       expect(response).to have_http_status(422)
-      expect(json['message']).to eq('params data is required')
+      expect(json['errors']['message']).to eq('params data is required')
     end
 
     it 'Post valid data with existing category to /api/v1/admin/categories' do
       post '/api/v1/admin/categories', params: data_existing
 
       expect(response).to have_http_status(422)
-      expect(json[0]).to eq('Name It already exists')
+      expect(json['errors']['name'].first).to eq('It already exists')
     end
   end
 
@@ -85,14 +85,14 @@ RSpec.describe 'Admin categories' do
       put "/api/v1/admin/categories/#{category.id}", params: invalid_data
 
       expect(response).to have_http_status(422)
-      expect(json['message']).to eq('params data is required')
+      expect(json['errors']['message']).to eq('params data is required')
     end
 
     it 'put existing data' do
       put "/api/v1/admin/categories/#{category.id}", params: data_existing
 
       expect(response).to have_http_status(422)
-      expect(json[0]).to eq('Name It already exists')
+      expect(json['errors']['name'].first).to eq('It already exists')
     end
 
     it 'category no found' do

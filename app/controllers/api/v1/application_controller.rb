@@ -28,7 +28,9 @@ module Api
       def error_operation(operation)
         if operation['contract.default'].present?
           render(
-            json: operation['contract.default'].errors.full_messages,
+            json: { 
+              errors: operation['contract.default'].errors.messages 
+            },
             status: :unprocessable_entity
           )
         else
@@ -38,15 +40,23 @@ module Api
 
       def record_no_found_error(exception)
         render(
-          json: { message: exception.message },
-          status: 404
+          json: { 
+            errors: {
+              message: exception.message
+            }
+          },
+          status: :not_found
         )
       end
 
       def params_data_error(exception)
         render(
-          json: { message: 'params data is required' },
-          status: 422
+          json: {
+            errors: {
+              message: 'params data is required'
+            }
+          },
+          status: :unprocessable_entity
         )
       end
 

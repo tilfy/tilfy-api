@@ -173,5 +173,59 @@
         }
       }
     }
-  }
+  },
+  "securityDefinitions": {
+    "apiAccessToken": {
+      "type": "apiKey",
+      "name": "access-token",
+      "in": "header"
+    },
+    "apiTokenType": {
+      "type": "apiKey",
+      "name": "token-type",
+      "in": "header"
+    },
+    "apiClient": {
+      "type": "apiKey",
+      "name": "client",
+      "in": "header"
+    },
+    "apiExpiry": {
+      "type": "apiKey",
+      "name": "expiry",
+      "in": "header"
+    },
+    "apiUid": {
+      "type": "apiKey",
+      "name": "uid",
+      "in": "header"
+    }
+  },
+  "security": [
+    {
+      "apiAccessToken": [
+
+      ]
+    },
+    {
+      "apiTokenType": [
+
+      ]
+    },
+    {
+      "apiClient": [
+
+      ]
+    },
+    {
+      "apiExpiry": [
+
+      ]
+    },
+    {
+      "apiUid": [
+
+      ]
+    }
+  ]
 }

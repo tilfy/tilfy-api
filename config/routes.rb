@@ -3,11 +3,11 @@ Rails.application.routes.draw do
   mount Rswag::Api::Engine => '/api-docs'
 
   get '/', to: redirect('/api-docs')
-  
-  devise_for :users
 
   namespace :api, { format: :json } do
     namespace :v1 do
+      mount_devise_token_auth_for 'User', at: 'auth', skip: [:omniauth_callbacks]
+      post 'auth/request', to:'authorization#get_authorization'
       namespace :admin do
         resources :categories
       end

@@ -14,6 +14,9 @@ gem 'figaro'
 
 # for user authentication
 gem 'devise'
+gem 'devise_token_auth'
+gem 'omniauth-google-oauth2'
+gem 'rest-client'
 
 # trailblazer
 gem 'trailblazer', '2.1.0.rc1'

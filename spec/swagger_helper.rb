@@ -19,7 +19,41 @@ RSpec.configure do |config|
         title: 'USER API',
         version: 'v1'
       },
-      paths: {}
+      paths: {},
+      securityDefinitions: {
+        apiAccessToken: {
+          type: :apiKey,
+          name: 'access-token',
+          in: :header
+        },
+        apiTokenType: {
+          type: :apiKey,
+          name: 'token-type',
+          in: :header
+        },
+        apiClient: {
+          type: :apiKey,
+          name: 'client',
+          in: :header
+        },
+        apiExpiry: {
+          type: :apiKey,
+          name: 'expiry',
+          in: :header
+        },
+        apiUid: {
+          type: :apiKey,
+          name: 'uid',
+          in: :header
+        }
+      },
+      security: [
+        { apiAccessToken: [] },
+        { apiTokenType: [] },
+        { apiClient: [] },
+        { apiExpiry: [] },
+        { apiUid: [] }
+      ]
     },
     'v1/admin/swagger.json' => {
       swagger: '2.0',
@@ -27,7 +61,41 @@ RSpec.configure do |config|
         title: 'ADMIN API',
         version: 'v1'
       },
-      paths: {}
+      paths: {},
+      securityDefinitions: {
+        apiAccessToken: {
+          type: :apiKey,
+          name: 'access-token',
+          in: :header
+        },
+        apiTokenType: {
+          type: :apiKey,
+          name: 'token-type',
+          in: :header
+        },
+        apiClient: {
+          type: :apiKey,
+          name: 'client',
+          in: :header
+        },
+        apiExpiry: {
+          type: :apiKey,
+          name: 'expiry',
+          in: :header
+        },
+        apiUid: {
+          type: :apiKey,
+          name: 'uid',
+          in: :header
+        }
+      },
+      security: [
+        { apiAccessToken: [] },
+        { apiTokenType: [] },
+        { apiClient: [] },
+        { apiExpiry: [] },
+        { apiUid: [] }
+      ]
     }
   }
 end

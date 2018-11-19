@@ -1,9 +1,12 @@
 module Api
   module V1
     class ApplicationController < ActionController::API
+      include DeviseTokenAuth::Concerns::SetUserByToken
+
+      before_action :authenticate_api_v1_user!
 
       rescue_from(
-        ActiveRecord::RecordNotFound, 
+        ActiveRecord::RecordNotFound,
         with: :record_no_found_error
       )
 
@@ -28,8 +31,8 @@ module Api
       def error_operation(operation)
         if operation['contract.default'].present?
           render(
-            json: { 
-              errors: operation['contract.default'].errors.messages 
+            json: {
+              errors: operation['contract.default'].errors.messages
             },
             status: :unprocessable_entity
           )
@@ -40,7 +43,7 @@ module Api
 
       def record_no_found_error(exception)
         render(
-          json: { 
+          json: {
             errors: {
               message: exception.message
             }

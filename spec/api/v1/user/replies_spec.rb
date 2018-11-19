@@ -33,10 +33,20 @@ RSpec.describe 'User replies' do
     }
   end
   let(:id) { SecureRandom.uuid }
+  let(:token) { user.create_new_auth_token }
+  let(:headers) do
+    {
+      'access-token': token['access-token'],
+      'client': token['client'],
+      'expiry': token['expiry'].to_s,
+      'uid': token['uid'],
+      'token-type': token['token-type']
+    }
+  end
 
   describe 'Collection of replies from a comment' do
     it 'get replies' do
-      get "/api/v1/comments/#{comment.id}/replies"
+      get "/api/v1/comments/#{comment.id}/replies", headers: headers
 
       expect(response).to have_http_status(200)
       expect(json).not_to be_empty
@@ -44,14 +54,14 @@ RSpec.describe 'User replies' do
     end
 
     it 'comment no found' do
-      get "/api/v1/comments/#{comment_id}/replies"
+      get "/api/v1/comments/#{comment_id}/replies", headers: headers
       expect(response).to have_http_status(404)
     end
   end
 
   describe 'Create a reply for comment' do
     it 'post valid data' do
-      post "/api/v1/comments/#{comment.id}/replies", params: valid_data
+      post "/api/v1/comments/#{comment.id}/replies", params: valid_data, headers: headers
 
       expect(response).to have_http_status(201)
       expect(json['user_id']).to eq(user.id)
@@ -60,21 +70,21 @@ RSpec.describe 'User replies' do
     end
 
     it 'post data with invalid user' do
-      post "/api/v1/comments/#{comment.id}/replies", params: invalid_user
+      post "/api/v1/comments/#{comment.id}/replies", params: invalid_user, headers: headers
 
       expect(response).to have_http_status(422)
       expect(json['errors']['user_id'].first).to eq('Must exist')
     end
 
     it 'post invalid data' do
-      post "/api/v1/comments/#{comment.id}/replies", params: invalid_data
+      post "/api/v1/comments/#{comment.id}/replies", params: invalid_data, headers: headers
 
       expect(response).to have_http_status(422)
       expect(json['errors']['message']).to eq('params data is required')
     end
 
     it 'comment no found' do
-      post "/api/v1/comments/#{comment_id}/replies", params: valid_data
+      post "/api/v1/comments/#{comment_id}/replies", params: valid_data, headers: headers
 
       expect(response).to have_http_status(404)
     end
@@ -82,21 +92,21 @@ RSpec.describe 'User replies' do
 
   describe 'Update reply' do
     it 'update reply with valid data' do
-      put "/api/v1/replies/#{reply.id}", params: update_valid_data
+      put "/api/v1/replies/#{reply.id}", params: update_valid_data, headers: headers
 
       expect(response).to have_http_status(200)
       expect(json['content']).to eq('Test update reply')
     end
 
     it 'put invalid data' do
-      put "/api/v1/replies/#{reply.id}", params: invalid_data
+      put "/api/v1/replies/#{reply.id}", params: invalid_data, headers: headers
 
       expect(response).to have_http_status(422)
       expect(json['errors']['message']).to eq('params data is required')
     end
 
     it 'reply no found' do
-      put "/api/v1/replies/#{id}", params: valid_data
+      put "/api/v1/replies/#{id}", params: valid_data, headers: headers
 
       expect(response).to have_http_status(404)
     end
@@ -104,16 +114,16 @@ RSpec.describe 'User replies' do
 
   describe 'Destroy reply from a comment' do
     it 'delete reply' do
-      delete "/api/v1/replies/#{reply.id}"
+      delete "/api/v1/replies/#{reply.id}", headers: headers
 
       expect(response).to have_http_status(204)
     end
 
     it 'reply no found' do
-      delete "/api/v1/replies/#{id}"
+      delete "/api/v1/replies/#{id}", headers: headers
 
       expect(response).to have_http_status(404)
     end
   end
-  
+
 end

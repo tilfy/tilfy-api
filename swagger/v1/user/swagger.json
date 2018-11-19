@@ -5,6 +5,48 @@
     "version": "v1"
   },
   "paths": {
+    "/api/v1/auth/request": {
+      "post": {
+        "summary": "Authorization",
+        "tags": [
+          "Auth"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "security": [
+
+        ],
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id_token": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id_token"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Completed authorization"
+          },
+          "422": {
+            "description": "invalid token"
+          }
+        }
+      }
+    },
     "/api/v1/posts/{post_id}/comments": {
       "get": {
         "summary": "Comments from a post",

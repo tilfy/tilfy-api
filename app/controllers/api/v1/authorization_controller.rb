@@ -12,7 +12,7 @@ module Api
         if operation.success?
           set_headers(operation[:token])
 
-          render json: { message: 'Signed in successfully with google'}, status: :created
+          render json: { message: 'Signed in successfully with google'}, status: :ok
         end
       end
 
